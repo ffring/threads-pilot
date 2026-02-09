@@ -1,0 +1,1460 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ThreadsPilot — Целевой трафик из Threads в 2 раза дешевле рынка</title>
+  
+  <!-- SEO -->
+  <meta name="description" content="AI-решение для привлечения целевого трафика из Threads в Telegram-канал. Оплата за результат, прозрачная отчётность, работа по договору.">
+  <meta name="keywords" content="threads, telegram, трафик, подписчики, AI, нейросети, SMM, маркетинг">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="ThreadsPilot — Целевой трафик из Threads в 2 раза дешевле">
+  <meta property="og:description" content="AI-решение для привлечения целевого трафика из Threads в Telegram-канал с оплатой за результат">
+  <meta property="og:image" content="assets/images/og-image.png">
+  <meta property="og:type" content="website">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Unbounded:wght@700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    :root {
+      --bg-primary: #0a0a12;
+      --bg-secondary: #0f0f1a;
+      --bg-elevated: #15152a;
+      --bg-card: rgba(20, 20, 40, 0.6);
+      --accent-primary: #8b5cf6;
+      --accent-secondary: #06b6d4;
+      --accent-gradient: linear-gradient(135deg, #8b5cf6 0%, #06b6d4 100%);
+      --text-primary: #f4f4f5;
+      --text-secondary: #a1a1aa;
+      --text-muted: #71717a;
+      --border: rgba(139, 92, 246, 0.15);
+      --border-glow: rgba(139, 92, 246, 0.4);
+      --font-display: 'Unbounded', sans-serif;
+      --font-body: 'Inter', system-ui, sans-serif;
+      --shadow-glow: 0 0 60px rgba(139, 92, 246, 0.3);
+    }
+    
+    html { scroll-behavior: smooth; }
+    
+    body {
+      font-family: var(--font-body);
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    
+    /* Typography */
+    .display-xl {
+      font: 800 clamp(2rem, 5vw, 3.5rem)/1.1 var(--font-display);
+      letter-spacing: -0.02em;
+    }
+    
+    .display-lg {
+      font: 700 clamp(1.5rem, 3.5vw, 2.25rem)/1.15 var(--font-display);
+      letter-spacing: -0.01em;
+    }
+    
+    .text-gradient {
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .highlight {
+      color: var(--accent-primary);
+    }
+    
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 1rem 2rem;
+      border-radius: 0.75rem;
+      font: 600 1rem/1 var(--font-body);
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: all 0.25s ease;
+    }
+    
+    .btn-primary {
+      background: var(--accent-gradient);
+      color: white;
+      box-shadow: var(--shadow-glow);
+    }
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 80px rgba(139, 92, 246, 0.5);
+    }
+    
+    .btn-secondary {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      color: var(--text-primary);
+    }
+    .btn-secondary:hover {
+      border-color: var(--accent-primary);
+      background: rgba(139, 92, 246, 0.1);
+    }
+    
+    .btn-telegram {
+      background: #26A5E4;
+      color: white;
+    }
+    .btn-telegram:hover {
+      background: #1d8bc4;
+      transform: translateY(-2px);
+    }
+    
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 1rem 0;
+      background: rgba(10, 10, 18, 0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    
+    header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    
+    .logo {
+      font: 700 1.25rem/1 var(--font-display);
+      color: var(--text-primary);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .logo-icon {
+      width: 32px;
+      height: 32px;
+      background: var(--accent-gradient);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+    }
+    
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    
+    nav a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9375rem;
+      transition: color 0.2s;
+    }
+    nav a:hover { color: var(--text-primary); }
+    
+    .lang-switch {
+      display: flex;
+      gap: 0.5rem;
+      padding: 0.25rem;
+      background: var(--bg-elevated);
+      border-radius: 0.5rem;
+      margin-left: 1rem;
+    }
+    
+    .lang-switch a {
+      padding: 0.375rem 0.75rem;
+      border-radius: 0.375rem;
+      font-size: 0.8125rem;
+      font-weight: 600;
+    }
+    
+    .lang-switch a.active {
+      background: var(--accent-gradient);
+      color: white;
+    }
+    
+    @media (max-width: 768px) {
+      nav { display: none; }
+      .lang-switch { margin-left: 0; }
+    }
+    
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 8rem 0 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: 
+        radial-gradient(ellipse 80% 50% at 50% 0%, rgba(139, 92, 246, 0.25) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 40% at 80% 20%, rgba(6, 182, 212, 0.15) 0%, transparent 50%);
+    }
+    
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+    
+    @media (max-width: 968px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .hero-ctas { justify-content: center; }
+    }
+    
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: 2rem;
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+    }
+    
+    .hero h1 { margin-bottom: 1.5rem; }
+    
+    .hero-subtitle {
+      font-size: 1.25rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.75rem;
+      line-height: 1.7;
+    }
+    
+    .hero-offer {
+      font-size: 1.125rem;
+      color: var(--accent-primary);
+      font-weight: 600;
+      margin-bottom: 2rem;
+      padding: 1rem;
+      background: rgba(139, 92, 246, 0.1);
+      border: 1px solid var(--border);
+      border-radius: 0.75rem;
+    }
+    
+    .hero-ctas {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    
+    .hero-visual {
+      position: relative;
+    }
+    
+    .hero-image {
+      width: 100%;
+      border-radius: 1rem;
+      box-shadow: var(--shadow-glow);
+    }
+    
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+    }
+    
+    .stat-item {
+      text-align: center;
+    }
+    
+    .stat-value {
+      font: 700 2rem/1 var(--font-display);
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.5rem;
+    }
+    
+    .stat-label {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+    }
+    
+    /* Sections */
+    section {
+      padding: 6rem 0;
+    }
+    
+    .section-header {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 4rem;
+    }
+    
+    .section-badge {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      background: rgba(139, 92, 246, 0.1);
+      border: 1px solid var(--border);
+      border-radius: 2rem;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--accent-primary);
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    
+    .section-header h2 { margin-bottom: 1rem; }
+    
+    .section-header p {
+      font-size: 1.125rem;
+      color: var(--text-secondary);
+    }
+    
+    /* Problem Section */
+    .problem-section {
+      background: var(--bg-secondary);
+    }
+    
+    .problem-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+    
+    @media (max-width: 768px) {
+      .problem-grid { grid-template-columns: 1fr; }
+    }
+    
+    .problem-card {
+      padding: 2rem;
+      border-radius: 1rem;
+      border: 1px solid var(--border);
+    }
+    
+    .problem-card.old {
+      background: rgba(239, 68, 68, 0.05);
+      border-color: rgba(239, 68, 68, 0.2);
+    }
+    
+    .problem-card.new {
+      background: rgba(34, 197, 94, 0.05);
+      border-color: rgba(34, 197, 94, 0.2);
+    }
+    
+    .problem-card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    
+    .problem-card.old h3 { color: #ef4444; }
+    .problem-card.new h3 { color: #22c55e; }
+    
+    .problem-list {
+      list-style: none;
+    }
+    
+    .problem-list li {
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-secondary);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+    
+    .problem-list li:last-child { border-bottom: none; }
+    
+    .problem-card.old .problem-list li::before {
+      content: "✗";
+      color: #ef4444;
+      font-weight: bold;
+    }
+    
+    .problem-card.new .problem-list li::before {
+      content: "✓";
+      color: #22c55e;
+      font-weight: bold;
+    }
+    
+    /* Features */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    
+    @media (max-width: 968px) {
+      .features-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    
+    @media (max-width: 640px) {
+      .features-grid { grid-template-columns: 1fr; }
+    }
+    
+    .feature-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 1.75rem;
+      transition: all 0.3s ease;
+    }
+    
+    .feature-card:hover {
+      border-color: var(--border-glow);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+    
+    .feature-icon {
+      width: 56px;
+      height: 56px;
+      margin-bottom: 1.25rem;
+      border-radius: 0.75rem;
+      object-fit: cover;
+    }
+    
+    .feature-card h3 {
+      font-size: 1.125rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .feature-card p {
+      color: var(--text-secondary);
+      font-size: 0.9375rem;
+      line-height: 1.6;
+    }
+    
+    /* How it Works */
+    .how-section {
+      background: var(--bg-secondary);
+    }
+    
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1rem;
+      position: relative;
+    }
+    
+    .steps-grid::before {
+      content: '';
+      position: absolute;
+      top: 2.5rem;
+      left: 10%;
+      right: 10%;
+      height: 2px;
+      background: var(--accent-gradient);
+      opacity: 0.3;
+    }
+    
+    @media (max-width: 968px) {
+      .steps-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .steps-grid::before { display: none; }
+    }
+    
+    .step {
+      text-align: center;
+      position: relative;
+    }
+    
+    .step-number {
+      width: 4rem;
+      height: 4rem;
+      margin: 0 auto 1.25rem;
+      background: var(--accent-gradient);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font: 700 1.5rem/1 var(--font-display);
+      color: white;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .step h3 {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .step p {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+    }
+    
+    /* Niches */
+    .niches-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+    
+    @media (max-width: 968px) {
+      .niches-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    
+    .niche-card {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    
+    .niche-card:hover {
+      border-color: var(--accent-primary);
+      transform: translateY(-2px);
+    }
+    
+    .niche-icon {
+      font-size: 2.5rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .niche-card h3 {
+      font-size: 1rem;
+      margin-bottom: 0.25rem;
+    }
+    
+    .niche-card p {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+    }
+    
+    /* Cases */
+    .cases-section {
+      background: var(--bg-secondary);
+    }
+    
+    .cases-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    
+    @media (max-width: 968px) {
+      .cases-grid { grid-template-columns: 1fr; }
+    }
+    
+    .case-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 2rem;
+      transition: all 0.3s ease;
+    }
+    
+    .case-card:hover {
+      border-color: var(--border-glow);
+      box-shadow: var(--shadow-glow);
+    }
+    
+    .case-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .case-avatar {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--accent-gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+    }
+    
+    .case-info h4 {
+      font-size: 1rem;
+      margin-bottom: 0.25rem;
+    }
+    
+    .case-info p {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+    }
+    
+    .case-stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      padding: 1rem;
+      background: rgba(139, 92, 246, 0.05);
+      border-radius: 0.75rem;
+    }
+    
+    .case-stat {
+      text-align: center;
+    }
+    
+    .case-stat-value {
+      font: 700 1.5rem/1 var(--font-display);
+      color: var(--accent-primary);
+    }
+    
+    .case-stat-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+    }
+    
+    .case-quote {
+      font-style: italic;
+      color: var(--text-secondary);
+      font-size: 0.9375rem;
+      line-height: 1.6;
+      border-left: 3px solid var(--accent-primary);
+      padding-left: 1rem;
+    }
+    
+    /* Offer */
+    .offer-section {
+      background: 
+        radial-gradient(ellipse 60% 50% at 50% 100%, rgba(139, 92, 246, 0.2) 0%, transparent 60%),
+        var(--bg-primary);
+    }
+    
+    .offer-card {
+      max-width: 800px;
+      margin: 0 auto;
+      background: var(--bg-card);
+      border: 2px solid var(--accent-primary);
+      border-radius: 1.5rem;
+      padding: 3rem;
+      text-align: center;
+      box-shadow: var(--shadow-glow);
+    }
+    
+    .offer-badge {
+      display: inline-block;
+      padding: 0.5rem 1.25rem;
+      background: var(--accent-gradient);
+      border-radius: 2rem;
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 1.5rem;
+    }
+    
+    .offer-card h2 {
+      margin-bottom: 1rem;
+    }
+    
+    .offer-card > p {
+      font-size: 1.125rem;
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+    }
+    
+    .offer-features {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin-bottom: 2rem;
+      text-align: left;
+    }
+    
+    @media (max-width: 640px) {
+      .offer-features { grid-template-columns: 1fr; }
+    }
+    
+    .offer-features li {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: var(--text-secondary);
+    }
+    
+    .offer-features li::before {
+      content: "✓";
+      color: #22c55e;
+      font-weight: bold;
+      font-size: 1.25rem;
+    }
+    
+    /* FAQ */
+    .faq-section {
+      background: var(--bg-secondary);
+    }
+    
+    .faq-list {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .faq-question {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 0;
+      background: none;
+      border: none;
+      color: var(--text-primary);
+      font: 600 1.0625rem/1.4 var(--font-body);
+      text-align: left;
+      cursor: pointer;
+    }
+    
+    .faq-question::after {
+      content: "+";
+      font-size: 1.5rem;
+      color: var(--accent-primary);
+      transition: transform 0.3s;
+      flex-shrink: 0;
+      margin-left: 1rem;
+    }
+    
+    .faq-item.open .faq-question::after {
+      transform: rotate(45deg);
+    }
+    
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+    
+    .faq-item.open .faq-answer {
+      max-height: 500px;
+    }
+    
+    .faq-answer p {
+      padding-bottom: 1.5rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+    
+    /* Final CTA */
+    .final-cta {
+      text-align: center;
+      padding: 8rem 0;
+    }
+    
+    .final-cta h2 {
+      margin-bottom: 1rem;
+    }
+    
+    .final-cta > p {
+      font-size: 1.25rem;
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    /* Footer */
+    footer {
+      padding: 3rem 0;
+      border-top: 1px solid var(--border);
+    }
+    
+    footer .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+    }
+    
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.875rem;
+    }
+    
+    .footer-links a:hover { color: var(--text-secondary); }
+    
+    .footer-copy {
+      color: var(--text-muted);
+      font-size: 0.875rem;
+    }
+    
+    /* Animations */
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    .float { animation: float 3s ease-in-out infinite; }
+    
+    /* Grain */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      opacity: 0.025;
+      pointer-events: none;
+      z-index: 9999;
+    }
+    
+    /* Threads Mock */
+    .threads-mock {
+      position: absolute;
+      right: -2rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 280px;
+      background: #101010;
+      border-radius: 2rem;
+      padding: 1rem;
+      border: 1px solid #333;
+      box-shadow: 0 40px 80px rgba(0,0,0,0.5);
+    }
+    
+    @media (max-width: 1200px) {
+      .threads-mock { display: none; }
+    }
+    
+    .threads-post {
+      background: #1a1a1a;
+      border-radius: 1rem;
+      padding: 1rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .threads-post-header {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .threads-avatar {
+      width: 32px;
+      height: 32px;
+      background: var(--accent-gradient);
+      border-radius: 50%;
+    }
+    
+    .threads-name {
+      font-size: 0.8125rem;
+      font-weight: 600;
+    }
+    
+    .threads-content {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.75rem;
+      line-height: 1.5;
+    }
+    
+    .threads-stats {
+      display: flex;
+      gap: 1rem;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+    
+    .threads-stats span {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    /* Screenshot Cards */
+    .screenshot-card {
+      background: #0d0d0d;
+      border: 1px solid #222;
+      border-radius: 1rem;
+      overflow: hidden;
+    }
+    
+    .screenshot-header {
+      padding: 0.75rem 1rem;
+      background: #111;
+      border-bottom: 1px solid #222;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .screenshot-dots {
+      display: flex;
+      gap: 0.375rem;
+    }
+    
+    .screenshot-dots span {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+    
+    .screenshot-dots span:nth-child(1) { background: #ff5f57; }
+    .screenshot-dots span:nth-child(2) { background: #ffbd2e; }
+    .screenshot-dots span:nth-child(3) { background: #28ca42; }
+    
+    .screenshot-body {
+      padding: 1.5rem;
+    }
+    
+    .chart-mock {
+      height: 200px;
+      background: linear-gradient(180deg, rgba(139, 92, 246, 0.2) 0%, transparent 100%);
+      border-radius: 0.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .chart-line {
+      position: absolute;
+      bottom: 20%;
+      left: 0;
+      right: 0;
+      height: 60%;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 100'%3E%3Cpath d='M0 80 Q50 70 100 60 T200 30 T300 15 T400 5' stroke='%238b5cf6' fill='none' stroke-width='3'/%3E%3C/svg%3E") no-repeat;
+      background-size: 100% 100%;
+    }
+    
+    .chart-value {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font: 700 1.5rem/1 var(--font-display);
+      color: var(--accent-primary);
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header>
+    <div class="container">
+      <a href="/" class="logo">
+        <span class="logo-icon">🚀</span>
+        ThreadsPilot
+      </a>
+      <nav>
+        <a href="#features">Возможности</a>
+        <a href="#how">Как работает</a>
+        <a href="#cases">Кейсы</a>
+        <a href="#faq">FAQ</a>
+        <a href="https://t.me/ffring" class="btn btn-telegram" target="_blank">Написать в Telegram</a>
+      </nav>
+      <div class="lang-switch">
+        <a href="index.html" class="active">RU</a>
+        <a href="en.html">EN</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span>🔥</span>
+            <span>Трафик с оплатой за результат</span>
+          </div>
+          <h1 class="display-xl">
+            Целевой трафик из Threads <span class="text-gradient">в 2 раза дешевле</span> рынка
+          </h1>
+          <p class="hero-subtitle">
+            AI-решение, которое генерирует живой, человечный контент под ваш стиль и тон — и переливает целевую аудиторию в ваш Telegram-канал.
+          </p>
+          <div class="hero-offer">
+            💰 Скажите нам вашу текущую стоимость подписчика — мы сделаем оффер <strong>в 2 раза дешевле</strong>
+          </div>
+          <div class="hero-ctas">
+            <a href="https://t.me/ffring" class="btn btn-telegram" target="_blank">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .37z"/></svg>
+              Написать в Telegram
+            </a>
+            <a href="#how" class="btn btn-secondary">Как это работает</a>
+          </div>
+          
+          <div class="hero-stats">
+            <div class="stat-item">
+              <div class="stat-value">2×</div>
+              <div class="stat-label">дешевле рынка</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value">100%</div>
+              <div class="stat-label">прозрачная отчётность</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value">3 дня</div>
+              <div class="stat-label">бесплатный тест</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="hero-visual">
+          <img src="assets/images/hero.png" alt="ThreadsPilot Dashboard" class="hero-image float" onerror="this.style.display='none'">
+          
+          <div class="threads-mock">
+            <div class="threads-post">
+              <div class="threads-post-header">
+                <div class="threads-avatar"></div>
+                <span class="threads-name">ai_marketing</span>
+              </div>
+              <div class="threads-content">Как мы увеличили конверсию лендинга на 340% с помощью одного A/B теста...</div>
+              <div class="threads-stats">
+                <span>❤️ 2.4K</span>
+                <span>💬 186</span>
+                <span>🔄 89</span>
+              </div>
+            </div>
+            <div class="threads-post">
+              <div class="threads-post-header">
+                <div class="threads-avatar"></div>
+                <span class="threads-name">ai_marketing</span>
+              </div>
+              <div class="threads-content">5 нейросетей, которые заменят целый отдел маркетинга 👇</div>
+              <div class="threads-stats">
+                <span>❤️ 5.1K</span>
+                <span>💬 342</span>
+                <span>🔄 256</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEM SECTION -->
+  <section class="problem-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Проблема</span>
+        <h2 class="display-lg">Почему трафик стоит космос?</h2>
+        <p>Стандартная модель закупки трафика устарела</p>
+      </div>
+      
+      <div class="problem-grid">
+        <div class="problem-card old">
+          <h3>❌ Как сейчас</h3>
+          <ul class="problem-list">
+            <li>Платите подрядчику за ведение</li>
+            <li>Платите платформе за рекламу</li>
+            <li>Платите НДС 20% сверху</li>
+            <li>Аукционы перегреты, CPM растёт</li>
+            <li>Подписчик стоит 80-150₽ и выше</li>
+            <li>Нет гарантий качества аудитории</li>
+            <li>Деньги уходят в никуда</li>
+          </ul>
+        </div>
+        
+        <div class="problem-card new">
+          <h3>✅ Как с ThreadsPilot</h3>
+          <ul class="problem-list">
+            <li>Оплата только за результат</li>
+            <li>Никаких платформенных комиссий</li>
+            <li>Без НДС — органический трафик</li>
+            <li>Threads = свободная ниша</li>
+            <li>Подписчик от 30₽</li>
+            <li>Только целевая аудитория</li>
+            <li>Полная прозрачность</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section id="features">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Преимущества</span>
+        <h2 class="display-lg">Почему это работает</h2>
+        <p>AI-система, которая генерирует контент лучше, чем SMM-специалист</p>
+      </div>
+      
+      <div class="features-grid">
+        <div class="feature-card">
+          <img src="assets/images/feature-ai.png" alt="AI" class="feature-icon" onerror="this.outerHTML='<div class=\'feature-icon\' style=\'background:var(--accent-gradient);display:flex;align-items:center;justify-content:center;font-size:1.5rem\'>🧠</div>'">
+          <h3>Живой контент, не ИИ-слоп</h3>
+          <p>AI обучен на вашем стиле и тоне. Посты неотличимы от написанных человеком — никаких «революционных» и «инновационных».</p>
+        </div>
+        
+        <div class="feature-card">
+          <img src="assets/images/feature-target.png" alt="Target" class="feature-icon" onerror="this.outerHTML='<div class=\'feature-icon\' style=\'background:var(--accent-gradient);display:flex;align-items:center;justify-content:center;font-size:1.5rem\'>🎯</div>'">
+          <h3>Только целевой трафик</h3>
+          <p>Контент заточен под вашу нишу. Подписываются те, кому реально интересна ваша тема. Не понравится качество — не платите.</p>
+        </div>
+        
+        <div class="feature-card">
+          <img src="assets/images/feature-shield.png" alt="Shield" class="feature-icon" onerror="this.outerHTML='<div class=\'feature-icon\' style=\'background:var(--accent-gradient);display:flex;align-items:center;justify-content:center;font-size:1.5rem\'>🛡️</div>'">
+          <h3>Без галлюцинаций</h3>
+          <p>Вы определяете, о чём НЕЛЬЗЯ писать. AI строго следует вашим ограничениям — никаких выдумок и фейков.</p>
+        </div>
+        
+        <div class="feature-card">
+          <img src="assets/images/feature-scale.png" alt="Scale" class="feature-icon" onerror="this.outerHTML='<div class=\'feature-icon\' style=\'background:var(--accent-gradient);display:flex;align-items:center;justify-content:center;font-size:1.5rem\'>📈</div>'">
+          <h3>Легко масштабируется</h3>
+          <p>Нужно 100 подписчиков в день? 1000? 10 000? Мы подстраиваем объёмы под ваши задачи без потери качества.</p>
+        </div>
+        
+        <div class="feature-card">
+          <img src="assets/images/feature-chart.png" alt="Analytics" class="feature-icon" onerror="this.outerHTML='<div class=\'feature-icon\' style=\'background:var(--accent-gradient);display:flex;align-items:center;justify-content:center;font-size:1.5rem\'>📊</div>'">
+          <h3>Полная прозрачность</h3>
+          <p>Доступ к аккаунтам, уникальные ссылки для трекинга, детальная отчётность. Вы видите каждого подписчика.</p>
+        </div>
+        
+        <div class="feature-card">
+          <img src="assets/images/feature-contract.png" alt="Contract" class="feature-icon" onerror="this.outerHTML='<div class=\'feature-icon\' style=\'background:var(--accent-gradient);display:flex;align-items:center;justify-content:center;font-size:1.5rem\'>📝</div>'">
+          <h3>Работаем по договору</h3>
+          <p>Официальное сотрудничество, закрывающие документы, всё прозрачно и легально. Никаких серых схем.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="how" class="how-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Процесс</span>
+        <h2 class="display-lg">Как это работает</h2>
+        <p>От заявки до первого трафика — 3 дня</p>
+      </div>
+      
+      <div class="steps-grid">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h3>Заявка</h3>
+          <p>Пишете в Telegram, обсуждаем ваш канал и цели</p>
+        </div>
+        
+        <div class="step">
+          <div class="step-number">2</div>
+          <h3>Согласование</h3>
+          <p>Определяем стиль, тон, темы и ограничения контента</p>
+        </div>
+        
+        <div class="step">
+          <div class="step-number">3</div>
+          <h3>Настройка</h3>
+          <p>Мы настраиваем AI под ваш канал — вы ничего не делаете</p>
+        </div>
+        
+        <div class="step">
+          <div class="step-number">4</div>
+          <h3>Тестовый трафик</h3>
+          <p>3 дня бесплатного теста, оцениваете качество</p>
+        </div>
+        
+        <div class="step">
+          <div class="step-number">5</div>
+          <h3>Оплата</h3>
+          <p>Платите только за результат — за каждого подписчика</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NICHES -->
+  <section>
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Ниши</span>
+        <h2 class="display-lg">Для каких каналов подходит</h2>
+        <p>Работаем с B2B и экспертными каналами</p>
+      </div>
+      
+      <div class="niches-grid">
+        <div class="niche-card">
+          <div class="niche-icon">💼</div>
+          <h3>Бизнес и маркетинг</h3>
+          <p>Предприниматели, маркетологи</p>
+        </div>
+        <div class="niche-card">
+          <div class="niche-icon">🤖</div>
+          <h3>AI и технологии</h3>
+          <p>Нейросети, IT, разработка</p>
+        </div>
+        <div class="niche-card">
+          <div class="niche-icon">📈</div>
+          <h3>Инвестиции</h3>
+          <p>Крипто, акции, финансы</p>
+        </div>
+        <div class="niche-card">
+          <div class="niche-icon">🎓</div>
+          <h3>Образование</h3>
+          <p>Онлайн-школы, курсы</p>
+        </div>
+        <div class="niche-card">
+          <div class="niche-icon">⚖️</div>
+          <h3>Юристы и бухгалтеры</h3>
+          <p>Профессиональные услуги</p>
+        </div>
+        <div class="niche-card">
+          <div class="niche-icon">🏠</div>
+          <h3>Недвижимость</h3>
+          <p>Агентства, девелоперы</p>
+        </div>
+        <div class="niche-card">
+          <div class="niche-icon">💪</div>
+          <h3>Здоровье и спорт</h3>
+          <p>Фитнес, нутрициология</p>
+        </div>
+        <div class="niche-card">
+          <div class="niche-icon">✨</div>
+          <h3>Лайфстайл</h3>
+          <p>Продуктивность, саморазвитие</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASES -->
+  <section id="cases" class="cases-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Кейсы</span>
+        <h2 class="display-lg">Результаты клиентов</h2>
+        <p>Реальные цифры из разных ниш</p>
+      </div>
+      
+      <div class="cases-grid">
+        <div class="case-card">
+          <div class="case-header">
+            <div class="case-avatar">💼</div>
+            <div class="case-info">
+              <h4>Маркетинговое агентство</h4>
+              <p>B2B, услуги для бизнеса</p>
+            </div>
+          </div>
+          <div class="case-stats">
+            <div class="case-stat">
+              <div class="case-stat-value">3,200</div>
+              <div class="case-stat-label">подписчиков за месяц</div>
+            </div>
+            <div class="case-stat">
+              <div class="case-stat-value">42₽</div>
+              <div class="case-stat-label">стоимость подписчика</div>
+            </div>
+          </div>
+          <p class="case-quote">«Раньше платили 95₽ за подписчика в Яндексе. Теперь получаем более целевую аудиторию в 2 раза дешевле.»</p>
+        </div>
+        
+        <div class="case-card">
+          <div class="case-header">
+            <div class="case-avatar">🤖</div>
+            <div class="case-info">
+              <h4>Канал про нейросети</h4>
+              <p>AI, технологии, обучение</p>
+            </div>
+          </div>
+          <div class="case-stats">
+            <div class="case-stat">
+              <div class="case-stat-value">8,500</div>
+              <div class="case-stat-label">подписчиков за месяц</div>
+            </div>
+            <div class="case-stat">
+              <div class="case-stat-value">28₽</div>
+              <div class="case-stat-label">стоимость подписчика</div>
+            </div>
+          </div>
+          <p class="case-quote">«Контент в Threads настолько попадает в ЦА, что люди сами спрашивают ссылку на канал. Виральность зашкаливает.»</p>
+        </div>
+        
+        <div class="case-card">
+          <div class="case-header">
+            <div class="case-avatar">📈</div>
+            <div class="case-info">
+              <h4>Инвестиционный канал</h4>
+              <p>Крипто, трейдинг</p>
+            </div>
+          </div>
+          <div class="case-stats">
+            <div class="case-stat">
+              <div class="case-stat-value">5,100</div>
+              <div class="case-stat-label">подписчиков за месяц</div>
+            </div>
+            <div class="case-stat">
+              <div class="case-stat-value">35₽</div>
+              <div class="case-stat-label">стоимость подписчика</div>
+            </div>
+          </div>
+          <p class="case-quote">«Удивило качество аудитории. Вовлечённость в канале выросла на 40% — люди реально интересуются темой.»</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OFFER -->
+  <section class="offer-section">
+    <div class="container">
+      <div class="offer-card">
+        <span class="offer-badge">🔥 Специальное предложение</span>
+        <h2 class="display-lg">Бюджет от 100К/мес?</h2>
+        <p>Получите 3 дня бесплатного теста — настройка, запуск, первый трафик за наш счёт</p>
+        
+        <ul class="offer-features">
+          <li>Полная настройка AI под ваш стиль</li>
+          <li>Согласование всех тем и ограничений</li>
+          <li>Запуск тестовой кампании</li>
+          <li>Первые подписчики бесплатно</li>
+          <li>Детальный отчёт по результатам</li>
+          <li>Никаких обязательств</li>
+        </ul>
+        
+        <a href="https://t.me/ffring" class="btn btn-telegram" target="_blank">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .37z"/></svg>
+          Написать @ffring
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="faq-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">FAQ</span>
+        <h2 class="display-lg">Частые вопросы</h2>
+      </div>
+      
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question">Как вы гарантируете качество подписчиков?</button>
+          <div class="faq-answer">
+            <p>Мы создаём контент, заточенный под вашу нишу. Люди подписываются, потому что им интересна тема — это органический трафик, не боты. Вы получаете доступ к аккаунтам и можете сами убедиться в качестве контента. Если после теста качество не устроит — вы ничего не платите.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <button class="faq-question">Что если AI напишет чушь или неправду?</button>
+          <div class="faq-answer">
+            <p>Вы заранее определяете список тем, о которых НЕЛЬЗЯ писать. AI строго следует ограничениям. Также мы не генерируем контент «из головы» — всё основано на актуальных источниках и проверенной информации. Перед запуском вы согласовываете стиль и примеры постов.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <button class="faq-question">Как трекаете подписчиков?</button>
+          <div class="faq-answer">
+            <p>Каждая ссылка на ваш канал — уникальная. Мы используем UTM-метки и собственную аналитику. Вы видите, сколько людей перешло, сколько подписалось, из какого поста. Полная прозрачность и детальная отчётность.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <button class="faq-question">Почему Threads, а не другие платформы?</button>
+          <div class="faq-answer">
+            <p>Threads — быстрорастущая платформа с 250+ млн пользователей. Аукционы не перегреты, органический охват высокий, аудитория качественная (пришла из Instagram). Это идеальное окно возможностей — через год здесь будет так же дорого, как везде.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <button class="faq-question">Какой минимальный бюджет?</button>
+          <div class="faq-answer">
+            <p>Рекомендуемый бюджет — от 100 000₽/мес. При таком объёме мы можем обеспечить стабильный поток трафика и адекватную unit-экономику. Для бюджетов от 100К — бесплатная настройка и 3 дня теста.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <button class="faq-question">Работаете официально?</button>
+          <div class="faq-answer">
+            <p>Да, работаем по договору. Предоставляем все закрывающие документы. Можем работать с юрлицами и ИП. Всё прозрачно и легально.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <button class="faq-question">Что если у меня нет текущей стоимости подписчика?</button>
+          <div class="faq-answer">
+            <p>Не проблема. Мы сделаем предложение на основе среднерыночных цен в вашей нише. Обычно это 80-150₽ за подписчика в платной рекламе — мы предложим 40-75₽.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta">
+    <div class="container">
+      <h2 class="display-lg">Готовы получать <span class="text-gradient">целевой трафик дешевле</span>?</h2>
+      <p>Напишите в Telegram — обсудим ваш канал и сделаем персональный оффер</p>
+      <a href="https://t.me/ffring" class="btn btn-telegram" target="_blank">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .37z"/></svg>
+        Написать @ffring
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-links">
+        <a href="https://t.me/ffring" target="_blank">Telegram</a>
+        <a href="mailto:d.ffring@gmail.com">Email</a>
+      </div>
+      <p class="footer-copy">© 2026 ThreadsPilot. Все права защищены.</p>
+    </div>
+  </footer>
+
+  <script>
+    // FAQ accordion
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        const wasOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!wasOpen) item.classList.add('open');
+      });
+    });
+  </script>
+</body>
+</html>

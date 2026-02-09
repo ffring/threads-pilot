@@ -1,0 +1,1350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ThreadsPilot — Targeted Traffic from Threads at 50% Market Price</title>
+  
+  <!-- SEO -->
+  <meta name="description" content="AI-powered solution for driving targeted traffic from Threads to your Telegram channel. Pay only for results, full transparency, official contract.">
+  <meta name="keywords" content="threads, telegram, traffic, subscribers, AI, marketing, SMM, growth">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="ThreadsPilot — Targeted Traffic at 50% Market Price">
+  <meta property="og:description" content="AI solution for driving targeted traffic from Threads to Telegram with pay-per-result model">
+  <meta property="og:image" content="assets/images/og-image.png">
+  <meta property="og:type" content="website">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Unbounded:wght@700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    :root {
+      --bg-primary: #0a0a12;
+      --bg-secondary: #0f0f1a;
+      --bg-elevated: #15152a;
+      --bg-card: rgba(20, 20, 40, 0.6);
+      --accent-primary: #8b5cf6;
+      --accent-secondary: #06b6d4;
+      --accent-gradient: linear-gradient(135deg, #8b5cf6 0%, #06b6d4 100%);
+      --text-primary: #f4f4f5;
+      --text-secondary: #a1a1aa;
+      --text-muted: #71717a;
+      --border: rgba(139, 92, 246, 0.15);
+      --border-glow: rgba(139, 92, 246, 0.4);
+      --font-display: 'Unbounded', sans-serif;
+      --font-body: 'Inter', system-ui, sans-serif;
+      --shadow-glow: 0 0 60px rgba(139, 92, 246, 0.3);
+    }
+    
+    html { scroll-behavior: smooth; }
+    
+    body {
+      font-family: var(--font-body);
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    
+    .display-xl {
+      font: 800 clamp(2rem, 5vw, 3.5rem)/1.1 var(--font-display);
+      letter-spacing: -0.02em;
+    }
+    
+    .display-lg {
+      font: 700 clamp(1.5rem, 3.5vw, 2.25rem)/1.15 var(--font-display);
+      letter-spacing: -0.01em;
+    }
+    
+    .text-gradient {
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 1rem 2rem;
+      border-radius: 0.75rem;
+      font: 600 1rem/1 var(--font-body);
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: all 0.25s ease;
+    }
+    
+    .btn-primary {
+      background: var(--accent-gradient);
+      color: white;
+      box-shadow: var(--shadow-glow);
+    }
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 80px rgba(139, 92, 246, 0.5);
+    }
+    
+    .btn-secondary {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      color: var(--text-primary);
+    }
+    .btn-secondary:hover {
+      border-color: var(--accent-primary);
+      background: rgba(139, 92, 246, 0.1);
+    }
+    
+    .btn-telegram {
+      background: #26A5E4;
+      color: white;
+    }
+    .btn-telegram:hover {
+      background: #1d8bc4;
+      transform: translateY(-2px);
+    }
+    
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 1rem 0;
+      background: rgba(10, 10, 18, 0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    
+    header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    
+    .logo {
+      font: 700 1.25rem/1 var(--font-display);
+      color: var(--text-primary);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .logo-icon {
+      width: 32px;
+      height: 32px;
+      background: var(--accent-gradient);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+    }
+    
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    
+    nav a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9375rem;
+      transition: color 0.2s;
+    }
+    nav a:hover { color: var(--text-primary); }
+    
+    .lang-switch {
+      display: flex;
+      gap: 0.5rem;
+      padding: 0.25rem;
+      background: var(--bg-elevated);
+      border-radius: 0.5rem;
+      margin-left: 1rem;
+    }
+    
+    .lang-switch a {
+      padding: 0.375rem 0.75rem;
+      border-radius: 0.375rem;
+      font-size: 0.8125rem;
+      font-weight: 600;
+    }
+    
+    .lang-switch a.active {
+      background: var(--accent-gradient);
+      color: white;
+    }
+    
+    @media (max-width: 768px) {
+      nav { display: none; }
+      .lang-switch { margin-left: 0; }
+    }
+    
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 8rem 0 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: 
+        radial-gradient(ellipse 80% 50% at 50% 0%, rgba(139, 92, 246, 0.25) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 40% at 80% 20%, rgba(6, 182, 212, 0.15) 0%, transparent 50%);
+    }
+    
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+    
+    @media (max-width: 968px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .hero-ctas { justify-content: center; }
+    }
+    
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: 2rem;
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+    }
+    
+    .hero h1 { margin-bottom: 1.5rem; }
+    
+    .hero-subtitle {
+      font-size: 1.25rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.75rem;
+      line-height: 1.7;
+    }
+    
+    .hero-offer {
+      font-size: 1.125rem;
+      color: var(--accent-primary);
+      font-weight: 600;
+      margin-bottom: 2rem;
+      padding: 1rem;
+      background: rgba(139, 92, 246, 0.1);
+      border: 1px solid var(--border);
+      border-radius: 0.75rem;
+    }
+    
+    .hero-ctas {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    
+    .hero-visual {
+      position: relative;
+    }
+    
+    .hero-image {
+      width: 100%;
+      border-radius: 1rem;
+      box-shadow: var(--shadow-glow);
+    }
+    
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+    }
+    
+    .stat-item { text-align: center; }
+    
+    .stat-value {
+      font: 700 2rem/1 var(--font-display);
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.5rem;
+    }
+    
+    .stat-label {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+    }
+    
+    section { padding: 6rem 0; }
+    
+    .section-header {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 4rem;
+    }
+    
+    .section-badge {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      background: rgba(139, 92, 246, 0.1);
+      border: 1px solid var(--border);
+      border-radius: 2rem;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--accent-primary);
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    
+    .section-header h2 { margin-bottom: 1rem; }
+    
+    .section-header p {
+      font-size: 1.125rem;
+      color: var(--text-secondary);
+    }
+    
+    .problem-section { background: var(--bg-secondary); }
+    
+    .problem-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+    
+    @media (max-width: 768px) {
+      .problem-grid { grid-template-columns: 1fr; }
+    }
+    
+    .problem-card {
+      padding: 2rem;
+      border-radius: 1rem;
+      border: 1px solid var(--border);
+    }
+    
+    .problem-card.old {
+      background: rgba(239, 68, 68, 0.05);
+      border-color: rgba(239, 68, 68, 0.2);
+    }
+    
+    .problem-card.new {
+      background: rgba(34, 197, 94, 0.05);
+      border-color: rgba(34, 197, 94, 0.2);
+    }
+    
+    .problem-card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    
+    .problem-card.old h3 { color: #ef4444; }
+    .problem-card.new h3 { color: #22c55e; }
+    
+    .problem-list { list-style: none; }
+    
+    .problem-list li {
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-secondary);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+    
+    .problem-list li:last-child { border-bottom: none; }
+    
+    .problem-card.old .problem-list li::before {
+      content: "✗";
+      color: #ef4444;
+      font-weight: bold;
+    }
+    
+    .problem-card.new .problem-list li::before {
+      content: "✓";
+      color: #22c55e;
+      font-weight: bold;
+    }
+    
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    
+    @media (max-width: 968px) {
+      .features-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    
+    @media (max-width: 640px) {
+      .features-grid { grid-template-columns: 1fr; }
+    }
+    
+    .feature-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 1.75rem;
+      transition: all 0.3s ease;
+    }
+    
+    .feature-card:hover {
+      border-color: var(--border-glow);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+    
+    .feature-icon {
+      width: 56px;
+      height: 56px;
+      margin-bottom: 1.25rem;
+      border-radius: 0.75rem;
+      object-fit: cover;
+    }
+    
+    .feature-card h3 {
+      font-size: 1.125rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .feature-card p {
+      color: var(--text-secondary);
+      font-size: 0.9375rem;
+      line-height: 1.6;
+    }
+    
+    .how-section { background: var(--bg-secondary); }
+    
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1rem;
+      position: relative;
+    }
+    
+    .steps-grid::before {
+      content: '';
+      position: absolute;
+      top: 2.5rem;
+      left: 10%;
+      right: 10%;
+      height: 2px;
+      background: var(--accent-gradient);
+      opacity: 0.3;
+    }
+    
+    @media (max-width: 968px) {
+      .steps-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .steps-grid::before { display: none; }
+    }
+    
+    .step {
+      text-align: center;
+      position: relative;
+    }
+    
+    .step-number {
+      width: 4rem;
+      height: 4rem;
+      margin: 0 auto 1.25rem;
+      background: var(--accent-gradient);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font: 700 1.5rem/1 var(--font-display);
+      color: white;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .step h3 {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .step p {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+    }
+    
+    .niches-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+    
+    @media (max-width: 968px) {
+      .niches-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    
+    .niche-card {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    
+    .niche-card:hover {
+      border-color: var(--accent-primary);
+      transform: translateY(-2px);
+    }
+    
+    .niche-icon {
+      font-size: 2.5rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .niche-card h3 {
+      font-size: 1rem;
+      margin-bottom: 0.25rem;
+    }
+    
+    .niche-card p {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+    }
+    
+    .cases-section { background: var(--bg-secondary); }
+    
+    .cases-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    
+    @media (max-width: 968px) {
+      .cases-grid { grid-template-columns: 1fr; }
+    }
+    
+    .case-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 2rem;
+      transition: all 0.3s ease;
+    }
+    
+    .case-card:hover {
+      border-color: var(--border-glow);
+      box-shadow: var(--shadow-glow);
+    }
+    
+    .case-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .case-avatar {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--accent-gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+    }
+    
+    .case-info h4 {
+      font-size: 1rem;
+      margin-bottom: 0.25rem;
+    }
+    
+    .case-info p {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+    }
+    
+    .case-stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      padding: 1rem;
+      background: rgba(139, 92, 246, 0.05);
+      border-radius: 0.75rem;
+    }
+    
+    .case-stat { text-align: center; }
+    
+    .case-stat-value {
+      font: 700 1.5rem/1 var(--font-display);
+      color: var(--accent-primary);
+    }
+    
+    .case-stat-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+    }
+    
+    .case-quote {
+      font-style: italic;
+      color: var(--text-secondary);
+      font-size: 0.9375rem;
+      line-height: 1.6;
+      border-left: 3px solid var(--accent-primary);
+      padding-left: 1rem;
+    }
+    
+    .offer-section {
+      background: 
+        radial-gradient(ellipse 60% 50% at 50% 100%, rgba(139, 92, 246, 0.2) 0%, transparent 60%),
+        var(--bg-primary);
+    }
+    
+    .offer-card {
+      max-width: 800px;
+      margin: 0 auto;
+      background: var(--bg-card);
+      border: 2px solid var(--accent-primary);
+      border-radius: 1.5rem;
+      padding: 3rem;
+      text-align: center;
+      box-shadow: var(--shadow-glow);
+    }
+    
+    .offer-badge {
+      display: inline-block;
+      padding: 0.5rem 1.25rem;
+      background: var(--accent-gradient);
+      border-radius: 2rem;
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 1.5rem;
+    }
+    
+    .offer-card h2 { margin-bottom: 1rem; }
+    
+    .offer-card > p {
+      font-size: 1.125rem;
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+    }
+    
+    .offer-features {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin-bottom: 2rem;
+      text-align: left;
+    }
+    
+    @media (max-width: 640px) {
+      .offer-features { grid-template-columns: 1fr; }
+    }
+    
+    .offer-features li {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: var(--text-secondary);
+    }
+    
+    .offer-features li::before {
+      content: "✓";
+      color: #22c55e;
+      font-weight: bold;
+      font-size: 1.25rem;
+    }
+    
+    .faq-section { background: var(--bg-secondary); }
+    
+    .faq-list {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .faq-item { border-bottom: 1px solid var(--border); }
+    
+    .faq-question {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 0;
+      background: none;
+      border: none;
+      color: var(--text-primary);
+      font: 600 1.0625rem/1.4 var(--font-body);
+      text-align: left;
+      cursor: pointer;
+    }
+    
+    .faq-question::after {
+      content: "+";
+      font-size: 1.5rem;
+      color: var(--accent-primary);
+      transition: transform 0.3s;
+      flex-shrink: 0;
+      margin-left: 1rem;
+    }
+    
+    .faq-item.open .faq-question::after { transform: rotate(45deg); }
+    
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+    
+    .faq-item.open .faq-answer { max-height: 500px; }
+    
+    .faq-answer p {
+      padding-bottom: 1.5rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+    
+    .final-cta {
+      text-align: center;
+      padding: 8rem 0;
+    }
+    
+    .final-cta h2 { margin-bottom: 1rem; }
+    
+    .final-cta > p {
+      font-size: 1.25rem;
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    footer {
+      padding: 3rem 0;
+      border-top: 1px solid var(--border);
+    }
+    
+    footer .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+    }
+    
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.875rem;
+    }
+    
+    .footer-links a:hover { color: var(--text-secondary); }
+    
+    .footer-copy {
+      color: var(--text-muted);
+      font-size: 0.875rem;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    .float { animation: float 3s ease-in-out infinite; }
+    
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      opacity: 0.025;
+      pointer-events: none;
+      z-index: 9999;
+    }
+    
+    .threads-mock {
+      position: absolute;
+      right: -2rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 280px;
+      background: #101010;
+      border-radius: 2rem;
+      padding: 1rem;
+      border: 1px solid #333;
+      box-shadow: 0 40px 80px rgba(0,0,0,0.5);
+    }
+    
+    @media (max-width: 1200px) {
+      .threads-mock { display: none; }
+    }
+    
+    .threads-post {
+      background: #1a1a1a;
+      border-radius: 1rem;
+      padding: 1rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .threads-post-header {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .threads-avatar {
+      width: 32px;
+      height: 32px;
+      background: var(--accent-gradient);
+      border-radius: 50%;
+    }
+    
+    .threads-name {
+      font-size: 0.8125rem;
+      font-weight: 600;
+    }
+    
+    .threads-content {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.75rem;
+      line-height: 1.5;
+    }
+    
+    .threads-stats {
+      display: flex;
+      gap: 1rem;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+    
+    .threads-stats span {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header>
+    <div class="container">
+      <a href="/" class="logo">
+        <span class="logo-icon">🚀</span>
+        ThreadsPilot
+      </a>
+      <nav>
+        <a href="#features">Features</a>
+        <a href="#how">How It Works</a>
+        <a href="#cases">Cases</a>
+        <a href="#faq">FAQ</a>
+        <a href="https://t.me/ffring" class="btn btn-telegram" target="_blank">Contact on Telegram</a>
+      </nav>
+      <div class="lang-switch">
+        <a href="index.html">RU</a>
+        <a href="en.html" class="active">EN</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span>🔥</span>
+            <span>Pay-per-result traffic</span>
+          </div>
+          <h1 class="display-xl">
+            Targeted Traffic from Threads at <span class="text-gradient">50% Market Price</span>
+          </h1>
+          <p class="hero-subtitle">
+            AI-powered solution that generates authentic, human-like content matching your style and tone — driving targeted audience to your Telegram channel.
+          </p>
+          <div class="hero-offer">
+            💰 Tell us your current cost per subscriber — we'll make an offer at <strong>half the price</strong>
+          </div>
+          <div class="hero-ctas">
+            <a href="https://t.me/ffring" class="btn btn-telegram" target="_blank">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .37z"/></svg>
+              Message on Telegram
+            </a>
+            <a href="#how" class="btn btn-secondary">How It Works</a>
+          </div>
+          
+          <div class="hero-stats">
+            <div class="stat-item">
+              <div class="stat-value">50%</div>
+              <div class="stat-label">below market price</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value">100%</div>
+              <div class="stat-label">transparent reporting</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value">3 days</div>
+              <div class="stat-label">free trial</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="hero-visual">
+          <img src="assets/images/hero.png" alt="ThreadsPilot Dashboard" class="hero-image float" onerror="this.style.display='none'">
+          
+          <div class="threads-mock">
+            <div class="threads-post">
+              <div class="threads-post-header">
+                <div class="threads-avatar"></div>
+                <span class="threads-name">ai_marketing</span>
+              </div>
+              <div class="threads-content">How we increased landing page conversion by 340% with a single A/B test...</div>
+              <div class="threads-stats">
+                <span>❤️ 2.4K</span>
+                <span>💬 186</span>
+                <span>🔄 89</span>
+              </div>
+            </div>
+            <div class="threads-post">
+              <div class="threads-post-header">
+                <div class="threads-avatar"></div>
+                <span class="threads-name">ai_marketing</span>
+              </div>
+              <div class="threads-content">5 AI tools that will replace your entire marketing department 👇</div>
+              <div class="threads-stats">
+                <span>❤️ 5.1K</span>
+                <span>💬 342</span>
+                <span>🔄 256</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEM SECTION -->
+  <section class="problem-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">The Problem</span>
+        <h2 class="display-lg">Why Traffic Costs a Fortune</h2>
+        <p>The traditional paid traffic model is broken</p>
+      </div>
+      
+      <div class="problem-grid">
+        <div class="problem-card old">
+          <h3>❌ The Old Way</h3>
+          <ul class="problem-list">
+            <li>Pay agency fees for management</li>
+            <li>Pay platform fees for ads</li>
+            <li>Pay VAT on top of everything</li>
+            <li>Overheated auctions, rising CPMs</li>
+            <li>$1-2+ per subscriber and climbing</li>
+            <li>No guarantee of audience quality</li>
+            <li>Money disappearing into thin air</li>
+          </ul>
+        </div>
+        
+        <div class="problem-card new">
+          <h3>✅ The ThreadsPilot Way</h3>
+          <ul class="problem-list">
+            <li>Pay only for results</li>
+            <li>Zero platform commissions</li>
+            <li>No ad spend — organic traffic</li>
+            <li>Threads = untapped opportunity</li>
+            <li>$0.30-0.50 per subscriber</li>
+            <li>Only targeted audience</li>
+            <li>Full transparency</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section id="features">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Features</span>
+        <h2 class="display-lg">Why It Works</h2>
+        <p>AI system that generates content better than human SMM managers</p>
+      </div>
+      
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon" style="background:var(--accent-gradient);display:flex;align-items:center;justify-content:center;font-size:1.5rem">🧠</div>
+          <h3>Authentic Content, Not AI Slop</h3>
+          <p>AI trained on your style and tone. Posts are indistinguishable from human-written — no "revolutionary" or "game-changing" clichés.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon" style="background:var(--accent-gradient);display:flex;align-items:center;justify-content:center;font-size:1.5rem">🎯</div>
+          <h3>Only Targeted Traffic</h3>
+          <p>Content tailored to your niche. Subscribers who are genuinely interested in your topic. Don't like the quality? Don't pay.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon" style="background:var(--accent-gradient);display:flex;align-items:center;justify-content:center;font-size:1.5rem">🛡️</div>
+          <h3>Zero Hallucinations</h3>
+          <p>You define what topics are OFF-LIMITS. AI strictly follows your constraints — no fabrications, no fake facts.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon" style="background:var(--accent-gradient);display:flex;align-items:center;justify-content:center;font-size:1.5rem">📈</div>
+          <h3>Easy to Scale</h3>
+          <p>Need 100 subscribers/day? 1,000? 10,000? We adjust volume to your needs without losing quality.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon" style="background:var(--accent-gradient);display:flex;align-items:center;justify-content:center;font-size:1.5rem">📊</div>
+          <h3>Full Transparency</h3>
+          <p>Access to accounts, unique tracking links, detailed reporting. You see every subscriber's journey.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon" style="background:var(--accent-gradient);display:flex;align-items:center;justify-content:center;font-size:1.5rem">📝</div>
+          <h3>Official Contract</h3>
+          <p>Proper business relationship, closing documents, everything transparent and legal. No gray schemes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="how" class="how-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Process</span>
+        <h2 class="display-lg">How It Works</h2>
+        <p>From inquiry to first traffic — 3 days</p>
+      </div>
+      
+      <div class="steps-grid">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h3>Inquiry</h3>
+          <p>Message us on Telegram, discuss your channel and goals</p>
+        </div>
+        
+        <div class="step">
+          <div class="step-number">2</div>
+          <h3>Alignment</h3>
+          <p>Define style, tone, topics, and content restrictions</p>
+        </div>
+        
+        <div class="step">
+          <div class="step-number">3</div>
+          <h3>Setup</h3>
+          <p>We configure AI for your channel — you do nothing</p>
+        </div>
+        
+        <div class="step">
+          <div class="step-number">4</div>
+          <h3>Test Traffic</h3>
+          <p>3 days free trial, evaluate the quality</p>
+        </div>
+        
+        <div class="step">
+          <div class="step-number">5</div>
+          <h3>Payment</h3>
+          <p>Pay only for results — per subscriber</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NICHES -->
+  <section>
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Niches</span>
+        <h2 class="display-lg">Which Channels We Serve</h2>
+        <p>B2B and expert-focused channels</p>
+      </div>
+      
+      <div class="niches-grid">
+        <div class="niche-card">
+          <div class="niche-icon">💼</div>
+          <h3>Business & Marketing</h3>
+          <p>Entrepreneurs, marketers</p>
+        </div>
+        <div class="niche-card">
+          <div class="niche-icon">🤖</div>
+          <h3>AI & Technology</h3>
+          <p>AI, IT, development</p>
+        </div>
+        <div class="niche-card">
+          <div class="niche-icon">📈</div>
+          <h3>Investing</h3>
+          <p>Crypto, stocks, finance</p>
+        </div>
+        <div class="niche-card">
+          <div class="niche-icon">🎓</div>
+          <h3>Education</h3>
+          <p>Online schools, courses</p>
+        </div>
+        <div class="niche-card">
+          <div class="niche-icon">⚖️</div>
+          <h3>Professional Services</h3>
+          <p>Legal, accounting</p>
+        </div>
+        <div class="niche-card">
+          <div class="niche-icon">🏠</div>
+          <h3>Real Estate</h3>
+          <p>Agencies, developers</p>
+        </div>
+        <div class="niche-card">
+          <div class="niche-icon">💪</div>
+          <h3>Health & Fitness</h3>
+          <p>Fitness, nutrition</p>
+        </div>
+        <div class="niche-card">
+          <div class="niche-icon">✨</div>
+          <h3>Lifestyle</h3>
+          <p>Productivity, self-improvement</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASES -->
+  <section id="cases" class="cases-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Case Studies</span>
+        <h2 class="display-lg">Client Results</h2>
+        <p>Real numbers from different niches</p>
+      </div>
+      
+      <div class="cases-grid">
+        <div class="case-card">
+          <div class="case-header">
+            <div class="case-avatar">💼</div>
+            <div class="case-info">
+              <h4>Marketing Agency</h4>
+              <p>B2B, business services</p>
+            </div>
+          </div>
+          <div class="case-stats">
+            <div class="case-stat">
+              <div class="case-stat-value">3,200</div>
+              <div class="case-stat-label">subscribers/month</div>
+            </div>
+            <div class="case-stat">
+              <div class="case-stat-value">$0.52</div>
+              <div class="case-stat-label">per subscriber</div>
+            </div>
+          </div>
+          <p class="case-quote">"We used to pay $1.20 per subscriber on Facebook. Now we get more targeted audience at less than half the cost."</p>
+        </div>
+        
+        <div class="case-card">
+          <div class="case-header">
+            <div class="case-avatar">🤖</div>
+            <div class="case-info">
+              <h4>AI News Channel</h4>
+              <p>AI, tech, education</p>
+            </div>
+          </div>
+          <div class="case-stats">
+            <div class="case-stat">
+              <div class="case-stat-value">8,500</div>
+              <div class="case-stat-label">subscribers/month</div>
+            </div>
+            <div class="case-stat">
+              <div class="case-stat-value">$0.35</div>
+              <div class="case-stat-label">per subscriber</div>
+            </div>
+          </div>
+          <p class="case-quote">"The Threads content resonates so well with our audience that people actively ask for the channel link. Virality is off the charts."</p>
+        </div>
+        
+        <div class="case-card">
+          <div class="case-header">
+            <div class="case-avatar">📈</div>
+            <div class="case-info">
+              <h4>Investment Channel</h4>
+              <p>Crypto, trading</p>
+            </div>
+          </div>
+          <div class="case-stats">
+            <div class="case-stat">
+              <div class="case-stat-value">5,100</div>
+              <div class="case-stat-label">subscribers/month</div>
+            </div>
+            <div class="case-stat">
+              <div class="case-stat-value">$0.43</div>
+              <div class="case-stat-label">per subscriber</div>
+            </div>
+          </div>
+          <p class="case-quote">"Audience quality surprised us. Channel engagement increased by 40% — people genuinely care about the topic."</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OFFER -->
+  <section class="offer-section">
+    <div class="container">
+      <div class="offer-card">
+        <span class="offer-badge">🔥 Special Offer</span>
+        <h2 class="display-lg">Budget $1,000+/month?</h2>
+        <p>Get a 3-day free trial — setup, launch, and first traffic on us</p>
+        
+        <ul class="offer-features">
+          <li>Full AI setup for your style</li>
+          <li>All topics and restrictions aligned</li>
+          <li>Test campaign launch</li>
+          <li>First subscribers free</li>
+          <li>Detailed results report</li>
+          <li>No obligations</li>
+        </ul>
+        
+        <a href="https://t.me/ffring" class="btn btn-telegram" target="_blank">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .37z"/></svg>
+          Message @ffring
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="faq-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">FAQ</span>
+        <h2 class="display-lg">Frequently Asked Questions</h2>
+      </div>
+      
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question">How do you guarantee subscriber quality?</button>
+          <div class="faq-answer">
+            <p>We create content tailored to your niche. People subscribe because they're interested in the topic — it's organic traffic, not bots. You get access to accounts and can verify content quality yourself. If you're not satisfied after the trial — you pay nothing.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <button class="faq-question">What if AI writes nonsense or false information?</button>
+          <div class="faq-answer">
+            <p>You define a list of topics that are OFF-LIMITS upfront. AI strictly follows these constraints. We don't generate content "from thin air" — everything is based on current sources and verified information. You approve style and sample posts before launch.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <button class="faq-question">How do you track subscribers?</button>
+          <div class="faq-answer">
+            <p>Every link to your channel is unique. We use UTM tags and proprietary analytics. You see how many people clicked, how many subscribed, from which post. Full transparency and detailed reporting.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <button class="faq-question">Why Threads instead of other platforms?</button>
+          <div class="faq-answer">
+            <p>Threads is a fast-growing platform with 250M+ users. Auctions aren't overheated, organic reach is high, audience quality is excellent (came from Instagram). This is the perfect window of opportunity — in a year, it'll be as expensive as everywhere else.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <button class="faq-question">What's the minimum budget?</button>
+          <div class="faq-answer">
+            <p>Recommended budget is $1,000+/month. At this volume, we can provide stable traffic flow and reasonable unit economics. For budgets $1,000+ — free setup and 3-day trial.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <button class="faq-question">Do you work officially?</button>
+          <div class="faq-answer">
+            <p>Yes, we work under contract. We provide all closing documents. Can work with companies and individuals. Everything is transparent and legal.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <button class="faq-question">What if I don't have a current cost per subscriber?</button>
+          <div class="faq-answer">
+            <p>No problem. We'll make an offer based on market averages in your niche. Typically $1-2 per subscriber in paid advertising — we'll offer $0.40-0.80.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta">
+    <div class="container">
+      <h2 class="display-lg">Ready to get <span class="text-gradient">targeted traffic for less</span>?</h2>
+      <p>Message on Telegram — let's discuss your channel and create a personalized offer</p>
+      <a href="https://t.me/ffring" class="btn btn-telegram" target="_blank">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .37z"/></svg>
+        Message @ffring
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-links">
+        <a href="https://t.me/ffring" target="_blank">Telegram</a>
+        <a href="mailto:d.ffring@gmail.com">Email</a>
+      </div>
+      <p class="footer-copy">© 2026 ThreadsPilot. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        const wasOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!wasOpen) item.classList.add('open');
+      });
+    });
+  </script>
+</body>
+</html>
